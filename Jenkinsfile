@@ -7,7 +7,7 @@ pipeline {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "159.223.191.140:8081"
-        NEXUS_REPOSITORY = "java-app"
+        NEXUS_REPOSITORY = "mavenrepo"
         NEXUS_CREDENTIAL_ID = "NEXUS_CRED"
     }
     stages {
@@ -39,12 +39,12 @@ pipeline {
                             nexusVersion: 'nexux3',
                             protocol: 'http',
                             nexusUrl: '18.220.75.190:8081',
-                            groupId: 'pom.com.mycompany.app',
+                            groupId: 'pom.com.mycompany-app',
                             version: 'pom.1.0-snapshot',
                             repository: 'mavenrepo',
                             credentialsId: 'nexuscred',
                             artifacts: [
-                                [artifactId: 'pom..my.app',
+                                [artifactId: 'pom..my-app',
                                 classifier: '', 
                                 file: artifactPath,
                                 type: pom.packaging],
