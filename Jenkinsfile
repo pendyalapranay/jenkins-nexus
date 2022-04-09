@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven "mymaven"
+        maven "readMavenPom"
     }
     environment {
         NEXUS_VERSION = "nexus3"
