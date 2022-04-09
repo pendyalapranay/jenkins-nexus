@@ -28,7 +28,7 @@ pipeline {
         stage("Publish to Nexus Repository Manager") {
             steps {
                 script {
-                   def  pom = readMavenPom file: "pom.xml";
+                    pom = readMavenPom file: "pom.xml";
                     filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
                     echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
                     artifactPath = filesByGlob[0].path;
@@ -39,12 +39,12 @@ pipeline {
                             nexusVersion: 'nexux3',
                             protocol: 'http',
                             nexusUrl: '18.220.75.190:8081',
-                            groupId: 'pom.com.mycompany-app',
+                            groupId: 'pom.com.mycompany.app',
                             version: 'pom.1.0-snapshot',
                             repository: 'mavenrepo',
                             credentialsId: 'nexuscred',
                             artifacts: [
-                                [artifactId: 'pom..my-app',
+                                [artifactId: 'pom.my.app',
                                 classifier: '', 
                                 file: artifactPath,
                                 type: pom.packaging],
