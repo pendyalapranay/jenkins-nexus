@@ -6,15 +6,15 @@ pipeline {
     environment {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "159.223.191.140:8081"
-        NEXUS_REPOSITORY = "mavenrepo"
-        NEXUS_CREDENTIAL_ID = "NEXUS_CRED"
+        NEXUS_URL = "65.2.4.109:8081"
+        NEXUS_REPOSITORY = "nex-int-jenkins"
+        NEXUS_CREDENTIAL_ID = "integration"
     }
     stages {
         stage("Clone code from GitHub") {
             steps {
                 script {
-                    git branch: 'main', credentialsId: 'github', url: 'https://github.com/gitakbar/jenkins-nexus.git';
+                    git branch: 'main', url: 'https://github.com/pendyalapranay/jenkins-nexus.git';
                 }
             }
         }
@@ -38,11 +38,11 @@ pipeline {
                         nexusArtifactUploader(
                             nexusVersion: 'nexux3',
                             protocol: 'http',
-                            nexusUrl: '18.220.75.190:8081',
+                            nexusUrl: '65.2.4.109:8081',
                             groupId: 'pom.com.mycompany.app',
                             version: 'pom.1.0-snapshot',
-                            repository: 'mavenrepo',
-                            credentialsId: 'nexuscred',
+                            repository: 'nex-int-jenkins',
+                            credentialsId: 'integration',
                             artifacts: [
                                 [artifactId: 'pom.my.app',
                                 classifier: '', 
